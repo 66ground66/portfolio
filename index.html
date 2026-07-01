@@ -7,7 +7,7 @@
   <meta name="description" content="Product & UX/UI Designer specialising in complex data platforms — financial analytics, industrial AI, B2B SaaS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,7 +21,7 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text-primary);
       -webkit-font-smoothing: antialiased;
@@ -120,8 +120,69 @@
     .case-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 1rem; }
     .col-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); font-weight: 500; margin-bottom: 7px; }
     .col-text { font-size: 13px; color: var(--text-secondary); line-height: 1.68; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
     .tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--text-tertiary); }
+
+    /* Dynamic Accordion Feature */
+    .trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: #1D6FD8;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: opacity 0.2s;
+    }
+    .trigger-btn:hover { opacity: 0.8; text-decoration: underline; }
+    .trigger-btn .icon {
+      display: inline-block;
+      transition: transform 0.2s ease;
+      font-size: 10px;
+    }
+    .case.expanded .trigger-btn .icon { transform: rotate(180deg); }
+
+    .expanded-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s ease;
+      opacity: 0;
+    }
+    .case.expanded .expanded-content {
+      max-height: 4000px; /* Accommodate high-res full screenshots cleanly */
+      margin-top: 1.5rem;
+      opacity: 1;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+
+    .screenshot-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .screenshot-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .screenshot-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 0.5px solid var(--border);
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+    .screenshot-caption {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
     /* About */
     .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: start; }
@@ -163,7 +224,7 @@
     <p class="slabel">Selected Work</p>
 
     <!-- MathDatos -->
-    <div class="case">
+    <div id="case-mathdatos" class="case">
       <div class="case-head">
         <h2 class="case-title">Financial Data Analytics Platform</h2>
         <span class="case-date">2025 — Present</span>
@@ -232,6 +293,42 @@
         <span class="tag">Financial analytics</span>
         <span class="tag">Demand forecasting</span>
         <span class="tag">Figma</span>
+      </div>
+
+      <!-- Toggle Button for Accordion Expansion -->
+      <button class="trigger-btn" onclick="toggleCase('case-mathdatos')">
+        <span>View full platform screens</span>
+        <span class="icon">▼</span>
+      </button>
+
+      <!-- Expandable Screenshot Content -->
+      <div class="expanded-content">
+        <div class="screenshot-gallery">
+          <div class="screenshot-item">
+            <img src="12345.png" alt="Sales behaviour and analysis dashboard">
+            <p class="screenshot-caption">Sales behaviour and performance analytics interface</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="Pantallas usuario ADMIN - perfil distribuidor comercial flujo y diseños en la plataforma - modulo Resumen.png" alt="Overview dashboard overview stream">
+            <p class="screenshot-caption">Admin commercial overview and platform dashboard framework</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="AIGC - Carga de Datos para Análisis Integral de Gestión Comercial.png" alt="Data compilation and platform ingestion workflow">
+            <p class="screenshot-caption">Interactive file architecture and platform column mapper tool</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="1234.png" alt="Vendedores directory metrics layout">
+            <p class="screenshot-caption">Sales team performance data matrices and list views</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="Pantallas usuario Admin - distribuidor comercial Modulo Vendedores.png" alt="Commercial profile insight overlay">
+            <p class="screenshot-caption">Distributor account performance matrices and user insight modals</p>
+          </div>
+          <div class="screenshot-item">
+            <img src="123.png" alt="Interactive profile settings screen layout">
+            <p class="screenshot-caption">Configurable dashboard component forms and profile parameters</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -327,9 +424,24 @@
       <p class="contact-title">Let's work<br><em>together</em></p>
       <a class="email" href="mailto:mattchaley@gmail.com">mattchaley@gmail.com</a>
     </div>
-    <p class="footer">Matvey Chaley · Berlin 2025</p>
+    <p class="footer">Matvey Chaley · Berlin 2026</p>
   </div>
 
 </div>
+
+<script>
+  function toggleCase(caseId) {
+    const caseElement = document.getElementById(caseId);
+    const btnText = caseElement.querySelector('.trigger-btn span:first-child');
+    
+    caseElement.classList.toggle('expanded');
+    
+    if (caseElement.classList.contains('expanded')) {
+      btnText.textContent = 'Hide platform screens';
+    } else {
+      btnText.textContent = 'View full platform screens';
+    }
+  }
+</script>
 </body>
 </html>
