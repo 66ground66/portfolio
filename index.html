@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matvey Chaley — Product & UX/UI Designer</title>
+  <meta name="description" content="Product & UX/UI Designer specialising in complex data platforms — financial analytics, industrial AI, B2B SaaS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-primary: #0D0D0D;
+      --text-secondary: #555;
+      --text-tertiary: #999;
+      --border: #E5E5E5;
+      --bg: #FAFAF9;
+      --accent: #27C4B8;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(42px, 8vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+    .name em { font-style: italic; }
+    .subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 5px; }
+    .meta { font-size: 13px; color: var(--text-tertiary); }
+
+    hr { border: none; border-top: 0.5px solid var(--border); margin: 2.5rem 0; }
+
+    /* Section label */
+    .slabel {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Case study */
+    .case { margin-bottom: 3rem; }
+    .case-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+    .case-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 22px;
+      color: var(--text-primary);
+    }
+    .case-date { font-size: 12px; color: var(--text-tertiary); white-space: nowrap; }
+    .case-co { font-size: 13px; color: var(--text-secondary); margin-bottom: 1.1rem; }
+    .case-co b { color: var(--text-primary); font-weight: 500; }
+
+    /* Mockup wrapper */
+    .mockup {
+      border-radius: 10px;
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    /* MathDatos mockup */
+    .md { display: flex; height: 230px; background: #F1F4F7; }
+    .md-sb { width: 118px; background: #1C2B3A; padding: 13px 11px; flex-shrink: 0; }
+    .md-logo { width: 52px; height: 6px; background: rgba(255,255,255,.18); border-radius: 2px; margin-bottom: 15px; }
+    .md-ni { height: 4.5px; border-radius: 2px; margin-bottom: 7px; background: rgba(255,255,255,.09); }
+    .md-ni.a { background: #27C4B8; width: 74%; }
+    .md-body { flex: 1; padding: 11px; display: flex; flex-direction: column; gap: 9px; }
+    .md-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+    .md-kpi { background: #fff; border: 0.5px solid #DDE2E8; border-radius: 6px; padding: 8px; }
+    .md-kl { height: 3.5px; background: #CDD3DA; border-radius: 2px; width: 55%; margin-bottom: 6px; }
+    .md-kv { height: 7px; border-radius: 2px; }
+    .md-row { display: flex; gap: 8px; flex: 1; }
+    .md-chart { background: #fff; border: 0.5px solid #DDE2E8; border-radius: 6px; padding: 8px 8px 0; flex: 1.4; display: flex; align-items: flex-end; gap: 4px; }
+    .md-bar { flex: 1; border-radius: 2px 2px 0 0; }
+    .md-tbl { background: #fff; border: 0.5px solid #DDE2E8; border-radius: 6px; flex: 1; overflow: hidden; }
+    .md-thead { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 4px; padding: 6px 8px; background: #F8FAFB; border-bottom: 0.5px solid #EEF1F4; }
+    .md-th { height: 3.5px; background: #C8D0DA; border-radius: 2px; }
+    .md-trow { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 4px; padding: 5px 8px; border-bottom: 0.5px solid #F0F3F6; align-items: center; }
+    .md-tc { height: 3px; background: #DDE2E8; border-radius: 2px; }
+    .md-td { height: 5px; background: #27C4B8; border-radius: 2px; opacity: .5; }
+    .md-badge { height: 9px; border-radius: 20px; background: #27C4B8; opacity: .22; width: 80%; }
+
+    /* Nvicta mockup */
+    .nv { background: #071525; height: 210px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .nv-gauges { display: flex; gap: 26px; justify-content: center; }
+    .nv-g { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+    .nv-ring { width: 46px; height: 46px; border-radius: 50%; border: 3px solid #0D2237; position: relative; }
+    .nv-ring::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 3px solid transparent; }
+    .nv-ring.r1::after { border-top-color: #27C4B8; border-right-color: #27C4B8; transform: rotate(12deg); }
+    .nv-ring.r2::after { border-top-color: #F4A444; transform: rotate(-22deg); }
+    .nv-ring.r3::after { border-top-color: #27C4B8; border-right-color: #27C4B8; border-bottom-color: rgba(39,196,184,.22); transform: rotate(8deg); }
+    .nv-gl { height: 3px; width: 34px; background: rgba(255,255,255,.11); border-radius: 2px; }
+    .nv-chart { flex: 1; border: 0.5px solid rgba(255,255,255,.07); border-radius: 6px; overflow: hidden; }
+    .nv-alts { display: flex; gap: 7px; }
+    .nv-alt { flex: 1; height: 20px; border-radius: 4px; background: rgba(255,255,255,.04); border: 0.5px solid rgba(255,255,255,.07); display: flex; align-items: center; padding: 0 8px; gap: 6px; }
+    .nv-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .nv-aline { height: 3px; flex: 1; background: rgba(255,255,255,.09); border-radius: 2px; }
+
+    /* Case body */
+    .case-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 1rem; }
+    .col-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); font-weight: 500; margin-bottom: 7px; }
+    .col-text { font-size: 13px; color: var(--text-secondary); line-height: 1.68; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--text-tertiary); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: start; }
+    .about-text { font-size: 13px; color: var(--text-secondary); line-height: 1.78; }
+    .about-text p + p { margin-top: 12px; }
+    .skill-row { border-top: 0.5px solid var(--border); padding-top: 11px; margin-bottom: 11px; }
+    .skill-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); font-weight: 500; margin-bottom: 5px; }
+    .skill-val { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* Contact */
+    .contact { display: flex; align-items: center; justify-content: space-between; }
+    .contact-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 30px; color: var(--text-primary); }
+    .contact-title em { font-style: italic; }
+    .email { font-size: 14px; color: #1D6FD8; text-decoration: none; }
+    .email:hover { text-decoration: underline; }
+    .footer { font-size: 12px; color: var(--text-tertiary); margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--border); }
+
+    @media (max-width: 540px) {
+      .case-head { flex-direction: column; gap: 2px; }
+      .case-cols, .about-grid { grid-template-columns: 1fr; }
+      .contact { flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <div style="margin-bottom:2.75rem">
+    <h1 class="name">Matvey<br><em>Chaley</em></h1>
+    <p class="subtitle">Product &amp; UX/UI Designer — Complex Data Platforms</p>
+    <p class="meta">Berlin, Germany &nbsp;·&nbsp; mattchaley@gmail.com</p>
+  </div>
+
+  <hr>
+
+  <!-- Work -->
+  <div style="margin:2.5rem 0">
+    <p class="slabel">Selected Work</p>
+
+    <!-- MathDatos -->
+    <div class="case">
+      <div class="case-head">
+        <h2 class="case-title">Financial Data Analytics Platform</h2>
+        <span class="case-date">2025 — Present</span>
+      </div>
+      <p class="case-co"><b>MathDatos</b> · B2B SaaS · Lead Product &amp; UX/UI Designer</p>
+      <div class="mockup">
+        <div class="md">
+          <div class="md-sb">
+            <div class="md-logo"></div>
+            <div class="md-ni a"></div>
+            <div class="md-ni" style="width:80%"></div>
+            <div class="md-ni" style="width:65%"></div>
+            <div class="md-ni" style="width:88%"></div>
+            <div class="md-ni" style="width:70%"></div>
+            <div class="md-ni" style="width:55%"></div>
+            <div class="md-ni" style="width:77%"></div>
+          </div>
+          <div class="md-body">
+            <div class="md-kpis">
+              <div class="md-kpi"><div class="md-kl"></div><div class="md-kv" style="width:44%;background:#27C4B8;opacity:.65"></div></div>
+              <div class="md-kpi"><div class="md-kl" style="width:68%"></div><div class="md-kv" style="width:60%;background:#1C2B3A;opacity:.5"></div></div>
+              <div class="md-kpi"><div class="md-kl" style="width:44%"></div><div class="md-kv" style="width:36%;background:#27C4B8;opacity:.65"></div></div>
+            </div>
+            <div class="md-row">
+              <div class="md-chart">
+                <div class="md-bar" style="height:55%;background:#27C4B8;opacity:.8"></div>
+                <div class="md-bar" style="height:72%;background:#27C4B8;opacity:.4"></div>
+                <div class="md-bar" style="height:84%;background:#27C4B8;opacity:.8"></div>
+                <div class="md-bar" style="height:48%;background:#27C4B8;opacity:.4"></div>
+                <div class="md-bar" style="height:91%;background:#27C4B8;opacity:.8"></div>
+                <div class="md-bar" style="height:63%;background:#27C4B8;opacity:.4"></div>
+                <div class="md-bar" style="height:78%;background:#27C4B8;opacity:.8"></div>
+                <div class="md-bar" style="height:44%;background:#27C4B8;opacity:.4"></div>
+                <div class="md-bar" style="height:88%;background:#27C4B8;opacity:.8"></div>
+              </div>
+              <div class="md-tbl">
+                <div class="md-thead">
+                  <div class="md-th" style="width:75%"></div>
+                  <div class="md-th" style="width:60%"></div>
+                  <div class="md-th" style="width:50%"></div>
+                </div>
+                <div class="md-trow"><div class="md-tc" style="width:90%"></div><div class="md-td" style="width:70%"></div><div class="md-badge"></div></div>
+                <div class="md-trow"><div class="md-tc" style="width:75%"></div><div class="md-td" style="width:50%;opacity:.3"></div><div class="md-badge" style="opacity:.11"></div></div>
+                <div class="md-trow"><div class="md-tc" style="width:85%"></div><div class="md-td" style="width:80%"></div><div class="md-badge" style="opacity:.19"></div></div>
+                <div class="md-trow"><div class="md-tc" style="width:60%"></div><div class="md-td" style="width:40%;opacity:.28"></div><div class="md-badge" style="opacity:.14"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div>
+          <p class="col-label">The challenge</p>
+          <p class="col-text">A multi-tenant B2B platform serving distributors across financial health, commercial performance, demand forecasting, and operational efficiency — each module requiring its own data model, role logic, and interaction pattern.</p>
+        </div>
+        <div>
+          <p class="col-label">My scope</p>
+          <p class="col-text">Built from zero as the only designer. Product architecture, full design system, and all UI across 8+ modules — SKU-level forecasting, financial health upload, commission tracking, customer classification, and a multi-step Seller Portal. Engineering, data science, and founders throughout.</p>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">Design system</span>
+        <span class="tag">Dashboard design</span>
+        <span class="tag">Data visualisation</span>
+        <span class="tag">Multi-role UX</span>
+        <span class="tag">Financial analytics</span>
+        <span class="tag">Demand forecasting</span>
+        <span class="tag">Figma</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Nvicta -->
+    <div class="case">
+      <div class="case-head">
+        <h2 class="case-title">Industrial AI &amp; Drilling Analytics Platform</h2>
+        <span class="case-date">2023 — 2024</span>
+      </div>
+      <p class="case-co"><b>Nvicta AI</b> · Lead UI/UX Designer</p>
+      <div class="mockup">
+        <div class="nv">
+          <div class="nv-gauges">
+            <div class="nv-g"><div class="nv-ring r1"></div><div class="nv-gl"></div></div>
+            <div class="nv-g"><div class="nv-ring r2"></div><div class="nv-gl" style="width:26px"></div></div>
+            <div class="nv-g"><div class="nv-ring r3"></div><div class="nv-gl" style="width:30px"></div></div>
+          </div>
+          <div class="nv-chart">
+            <svg viewBox="0 0 400 60" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
+              <polyline points="0,50 45,36 90,40 135,20 180,30 225,14 270,24 315,10 360,20 400,16" fill="none" stroke="#27C4B8" stroke-width="1.5" opacity=".85"/>
+              <polyline points="0,54 45,47 90,50 135,39 180,44 225,36 270,41 315,32 360,39 400,35" fill="none" stroke="#F4A444" stroke-width="1.5" opacity=".6"/>
+              <line x1="0" y1="18" x2="400" y2="18" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <div class="nv-alts">
+            <div class="nv-alt"><div class="nv-dot" style="background:#27C4B8"></div><div class="nv-aline"></div></div>
+            <div class="nv-alt"><div class="nv-dot" style="background:#F4A444"></div><div class="nv-aline" style="width:55%"></div></div>
+            <div class="nv-alt"><div class="nv-dot" style="background:#E04F4F"></div><div class="nv-aline" style="width:33%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-cols">
+        <div>
+          <p class="col-label">The challenge</p>
+          <p class="col-text">Operators, engineers, and supervisors in drilling environments needed to monitor continuous machine data and act on AI-generated insights in real time, under pressure. Clarity and speed were the core constraints.</p>
+        </div>
+        <div>
+          <p class="col-label">My scope</p>
+          <p class="col-text">Full design ownership. Designed dashboards, control panels, and a multi-level alert system. Defined information hierarchy and role-specific workflows. Worked directly with engineering and data science teams throughout.</p>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">Real-time monitoring</span>
+        <span class="tag">Alert systems</span>
+        <span class="tag">Industrial UX</span>
+        <span class="tag">AI integration</span>
+        <span class="tag">Multi-role workflows</span>
+        <span class="tag">Control panels</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- About -->
+  <div style="margin:2.5rem 0">
+    <p class="slabel">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>5+ years designing data-intensive B2B platforms. Full product ownership on every project — architecture, design system, and all UI execution.</p>
+        <p>Background in International Law. Mentored by Alexey Velikiy, founder of CorpGlory — formative grounding in business, product, and software company operations. Earlier work in architecture and interior design.</p>
+        <p>Originally from Belarus, based in Berlin.</p>
+      </div>
+      <div>
+        <div class="skill-row">
+          <p class="skill-label">Design</p>
+          <p class="skill-val">UX architecture · Design systems · Data visualisation · Dashboard design · Multi-step workflows · Role-based UX</p>
+        </div>
+        <div class="skill-row">
+          <p class="skill-label">Tools</p>
+          <p class="skill-val">Figma · Notion · Slack · MS Teams · Claude · Gemini · Cursor</p>
+        </div>
+        <div class="skill-row">
+          <p class="skill-label">AI / LLM</p>
+          <p class="skill-val">Prompt engineering · LLM-assisted UI · AI agents · Vibe coding · API integration</p>
+        </div>
+        <div class="skill-row">
+          <p class="skill-label">Domains</p>
+          <p class="skill-val">FinTech · B2B SaaS · Energy · Oil &amp; Gas · Industrial · Commercial analytics</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact -->
+  <div style="margin:2.5rem 0">
+    <div class="contact">
+      <p class="contact-title">Let's work<br><em>together</em></p>
+      <a class="email" href="mailto:mattchaley@gmail.com">mattchaley@gmail.com</a>
+    </div>
+    <p class="footer">Matvey Chaley · Berlin 2025</p>
+  </div>
+
+</div>
+</body>
+</html>
